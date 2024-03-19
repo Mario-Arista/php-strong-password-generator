@@ -35,7 +35,7 @@
         <div class="col-6 m-auto pt-4">
             <h2 class="text-warning fs-4">Password sicura generata:</h2>
             <div class="text-white p-2">   
-                <?php echo passwordGeneratorAll($lengthRequested)  ?>
+                <?php echo $password  ?>
             </div>
         </div>
 
