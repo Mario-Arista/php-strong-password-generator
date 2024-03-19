@@ -1,3 +1,13 @@
+<?php
+
+$lengthRequested = $_GET['lengthUser'];
+
+function passwordGeneratorAll($length) {
+    return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ|!"£$%&/()=?^abcdefghijklmnopqrstuvwyz'), 1, $length);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -22,11 +32,19 @@
             <form action="index.php" method="GET">
                 <div>
                     <label class="text-white p-2" for="passwordLunghezza">Scrivi la lunghezza della password che vuoi generare: </label>
-                    <input class="w-100 p-2 border border-0 rounded-3" name="passwordLunghezza" id="passwordLunghezza" type="number" placeholder="8" min="8" max="16">
+                    <input class="w-100 p-2 border border-0 rounded-3" name="lengthUser" id="lengthUser" type="number" placeholder="8" min="8" max="16">
                 </div>
                 <input value="genera" id="genera" class="text-dark bg-warning p-2 w-100 border border-0 rounded-3 mt-3 text-uppercase fw-bold" type="submit">
             </form>
         </div>
+
+        <div class="col-6 m-auto pt-4">
+            <h2 class="text-warning fs-4">Password sicura generata:</h2>
+            <div class="text-white p-2">   
+                <?php echo passwordGeneratorAll($lengthRequested)  ?>
+            </div>
+        </div>
+
 
     </main>
 
