@@ -1,31 +1,23 @@
 <?php
 
-// Dichiaro variable vuota per la password
-$password = "";
+function generatePassword($characterNumber) {
 
-// se utente scrive una lunghezza accettata
-if (isset($_GET['lengthUser']) && $_GET['lengthUser'] != "") {
+    $passwordCharacters = $_GET['passwordCharacters'];
 
-    // Mi salvo la lunghezza richiesta nel campo di input
-    $lengthRequested = $_GET['lengthUser'];
+    // array 
+    $characters = range('A', 'z');
 
-    function passwordGeneratorAll($length) {
 
-        // Genero la password casuale 
-        // con la lunghezza richiesta come parametro
+    // generare una lista di N caratteri presi casualmente dall'array appena creato
+    
+    $generatedPassword = "";
 
-        return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ|!"£$%&/()=?^abcdefghijklmnopqrstuvwyz'), 1, $length);
+    for($i = 0; $i < $characterNumber; $i++) {
+
+        // sto facendo N iterazioni
+        $generatedPassword .= $characters[ rand(0, count($characters) - 1) ];
+        
     }
 
-    // password uguale a funzione
-    $password = passwordGeneratorAll($lengthRequested);    
-
-} else {
-
-    // se l'utente non dichiara una lunghezza accettata e preme il bottone
-    // password è uguale a messaggio di alert
-    $password = "Inserisci una lunghezza valida per la password prima di premere GENERA";
+    return $generatedPassword;
 }
-
-
-?>
